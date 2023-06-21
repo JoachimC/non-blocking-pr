@@ -13,6 +13,7 @@ The goal is definitely **not** to reduce the amount of review. Rather do all the
 * GitHub tooling is based around blocking code reviews so might not naturally facilitate this workflow. [See pr-check script](#pr-check-script)
 * Busy code bases with multiple concurrent contributors might have problems if they also have regular low quality contributions - necessitating reverts/hot-fix branches, and/or obstructing subsequent changes being released.
 * Might require rigourous adoption of other Continuous Integration / Delivery practices[^3] to reduce the chances of low quality commits disrupting flow on `main`
+* Not likely to be suitable for public projects where (potential) contributors are unknown.
 
 # Steps
 ## Develop
