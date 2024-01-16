@@ -3,17 +3,17 @@ Ideas around a Non-Blocking PR workflow
 # Why
 The aim of Non-blocking Pull Requests is to reduce time wasted waiting and/or context switching between writing code and reviewing it.
 
-The goal is definitely **not** to reduce the amount of review. Rather do all the necessary checks - automated and manual - in way that is more efficient.
+The goal is definitely **not** to reduce the amount of review. Rather do all the necessary checks - automated and manual - in way that is more efficient and provides an opportunity for increased collaboration.
 
 ## Other potential benefits
 * Facilitate changes in smaller, more frequent increments
 * Provide space for the 'right' person to take the time to do a more thorough review - rather than just relying on the 'next' person available
 
 ## Cautions
-* GitHub tooling is based around blocking code reviews so might not naturally facilitate this workflow. [See pr-check script](#pr-check-script)
+* GitHub tooling is based around blocking code reviews so does not naturally facilitate this workflow.
 * Busy code bases with multiple concurrent contributors might have problems if they also have regular low quality contributions - necessitating reverts/hot-fix branches, and/or obstructing subsequent changes being released.
 * Might require rigourous adoption of other Continuous Integration / Delivery practices[^3] to reduce the chances of low quality commits disrupting flow on `main`
-* Not likely to be suitable for public projects where (potential) contributors are unknown.
+* Not likely to be suitable for public projects where (potential) contributors are unknown and/or not trusted.
 
 # Steps
 ## Develop
@@ -29,18 +29,15 @@ The goal is definitely **not** to reduce the amount of review. Rather do all the
 1) Receive request to review from 6) above.
 2) Review as normal - making comments / suggestions.
 3) Developer follows [Develop](#develop) process above to make any subsequent changes on new branches from `main`.
+4) Approve the PR. As GitHub does not support approval of already merged PRs, comment using some convention 'LGTM' (looks good to me) is a common variation.
 
 ## Release/Deploy
-1) Check all PRs merged before this have been reviewed and approved. [See pr-check script](#pr-check-script)
+1) Check all PRs merged before this have been reviewed and approved. 
+2) It can be helpful to click the 'generate release note' button to check what changes will be included in the release - and ensure it's only the intended (approved) PRs.
 2) Create release.
 
 # Notes
 * Operating this flow does not preclude using Blocking Pull Requests as and when required - for changes that are identified as requiring a more cautious (but less efficient) introduction into `main`.
-
-# pr-check script
-* [pr-check script](pr-check.ps1).
-* Requires powershell, and [`gh` cli](https://cli.github.com/manual/installation).
-* Tested on windows only.
 
 # References
 * https://tidyfirst.substack.com/p/thinking-about-code-review
